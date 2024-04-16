@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [X] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [X] Commit: `Create Subscriber model struct.`
+    -   [X] Commit: `Create Notification model struct.`
+    -   [X] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [X] Commit: `Implement add function in Subscriber repository.`
+    -   [X] Commit: `Implement list_all function in Subscriber repository.`
+    -   [X] Commit: `Implement delete function in Subscriber repository.`
+    -   [X] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,14 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. **In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or trait in Rust) in this BambangShop case, or a single Model struct is enough?** <BR> 
+Dalam konteks BambangShop, penggunaan interface atau trait untuk menggambarkan Subscriber tidak diperlukan karena semua Subscriber diwakili oleh satu class dengan perilaku yang sama. Sebuah single model struct sudah cukup untuk menyimpan data observer dan perilaku yang diperlukan untuk memberi tahu. Dengan tidak adanya variasi perilaku yang diharapkan dari observer, penggunaan sebuah model struct menjadi pendekatan yang tepat dan memadai.
+
+2. **id in Product and url in Subscriber is intended to be unique. Explain based on your understanding, is using Vec (list) sufficient or using DashMap (map/dictionary) like we currently use is necessary for this case?** <BR>
+Pada kasus di mana id dan url harus unik, penggunaan DashMap (map/dictionary) direkomendasikan daripada Vec (list). DashMap memungkinkan penggunaan key unik untuk operasi insert, lookup, dan deletion dengan efisiensi tinggi. Hal ini lebih menguntungkan daripada Vec, terutama jika terdapat kemungkinan kesamaan antara URL dan id, yang akan memerlukan dua Vec terpisah untuk menyimpan data dan dapat meningkatkan kompleksitas manajemen data serta memperlambat proses secara keseluruhan.
+
+3. **When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (SUBSCRIBERS) static variable, we used the DashMap external library for thread safe HashMap. Explain based on your understanding of design patterns, do we still need DashMap or we can implement Singleton pattern instead?** <BR>
+Dalam konteks pengembangan Rust yang mementingkan keselamatan penggunaan multithreading, penggunaan DashMap untuk static variable SUBSCRIBERS merupakan pilihan terbaik. DashMap memberikan thread safety dan akses yang efisien ke struktur data yang sama dari mana pun dalam aplikasi, menjaga keamanan konkurensi dalam lingkungan multi-threaded. Meskipun pola Singleton dapat diimplementasikan dalam Rust, penggunaan DashMap sudah mencakup fungsionalitas yang diperlukan tanpa memperkenalkan kompleksitas tambahan dari pola Singleton. DashMap adalah opsi yang tepat untuk kebutuhan static variable SUBSCRIBERS dalam BambangShop.
 
 #### Reflection Publisher-2
 
