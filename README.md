@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [X] Commit: `Implement delete function in Subscriber repository.`
     -   [X] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -87,5 +87,13 @@ Pada kasus di mana id dan url harus unik, penggunaan DashMap (map/dictionary) di
 Dalam konteks pengembangan Rust yang mementingkan keselamatan penggunaan multithreading, penggunaan DashMap untuk static variable SUBSCRIBERS merupakan pilihan terbaik. DashMap memberikan thread safety dan akses yang efisien ke struktur data yang sama dari mana pun dalam aplikasi, menjaga keamanan konkurensi dalam lingkungan multi-threaded. Meskipun pola Singleton dapat diimplementasikan dalam Rust, penggunaan DashMap sudah mencakup fungsionalitas yang diperlukan tanpa memperkenalkan kompleksitas tambahan dari pola Singleton. DashMap adalah opsi yang tepat untuk kebutuhan static variable SUBSCRIBERS dalam BambangShop.
 
 #### Reflection Publisher-2
+1. **In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?** <br>
+Memisahkan Service dan Repository dari Model adalah tindakan yang mendukung prinsip-prinsip SOLID, terutama Prinsip Single Responsibility (SRP). Dalam pola MVC tradisional, Model bertanggung jawab tidak hanya atas penyimpanan data tetapi juga logika bisnis, yang bertentangan dengan SRP. Dengan memisahkan Service untuk mengatur logika bisnis dan Repository untuk mengelola akses data, kita menerapkan konsep Separation of Concerns dari SOLID untuk menciptakan kode yang lebih fleksibel dan mudah diatur.
+
+2. **What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?** <br>
+Penggunaan model saja dalam penanganan data logic dan business logic akan menyebabkan keterkaitan yang tinggi antar bagian, meningkatkan kompleksitas kode dan menyulitkan perawatan serta skalabilitas aplikasi. Tanpa memisahkan Service dan Repository dari model, bagian-bagian akan saling terkait, membuat kode sulit dipelihara dan kompleksitasnya meningkat secara keseluruhan.
+
+3. **Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.** <br>
+Penggunaan Postman dalam pengujian API sangat membantu untuk mengirimkan permintaan HTTP dan memeriksa respons yang diterima. Postman memudahkan pengiriman permintaan HTTP dengan data dalam body atau parameter ke URL atau endpoint tertentu. Ini membantu memastikan bahwa endpoint dapat menerima dan merespons data dengan benar, mempermudah pengujian fungsionalitas aplikasi secara keseluruhan.
 
 #### Reflection Publisher-3
